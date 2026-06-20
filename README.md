@@ -133,13 +133,13 @@ https://grouplens.org/datasets/movielens/100k/
 
 ### 🎯 User-Based Recommendations
 
-![Recommendations by User](screenshots/recommendation%20sbyid.png)
+![Recommendations by User](screenshots/recommendationsbyid.png)
 
 ---
 
 ### 🎬 Similar Movies Recommendation
 
-![Recommendations by Movie](screenshots/recommendation%20sbymoviename.png)
+![Recommendations by Movie](screenshots/recommendationsbymoviename.png)
 
 ---
 
