@@ -6,6 +6,11 @@ The system predicts user preferences using learned user/movie embeddings and als
 
 ---
 
+Live demo : https://movierecommendationsystem-using-deeplearning-bh2xhfffcwpmcakq2.streamlit.app/
+
+---
+
+
 ## 🚀 Features
 
 ### 🎯 User-Based Recommendations
