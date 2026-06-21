@@ -19,31 +19,68 @@ st.set_page_config(
 # ---------------------------------------------------
 # LOAD MODEL
 # ---------------------------------------------------
+import os
 
-model = tf.keras.models.load_model(
-    "../models/movie_recommender.keras"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+MODEL_PATH = os.path.join(
+    BASE_DIR,
+    "..",
+    "models",
+    "movie_recommender.keras"
 )
+
+model = tf.keras.models.load_model(MODEL_PATH)
 
 # ---------------------------------------------------
 # LOAD ENCODERS
 # ---------------------------------------------------
+USER_ENCODER_PATH = os.path.join(
+    BASE_DIR,
+    "..",
+    "models",
+    "user_encoder.pkl"
+)
 
-with open("../models/user_encoder.pkl", "rb") as f:
-    user_encoder = pickle.load(f)
+with open(USER_ENCODER_PATH, "rb") as f:
 
-with open("../models/movie_encoder.pkl", "rb") as f:
-    movie_encoder = pickle.load(f)
+MOVIE_ENCODER_PATH = os.path.join(
+    BASE_DIR,
+    "..",
+    "models",
+    "movie_encoder.pkl"
+)
+
+with open(MOVIE_ENCODER_PATH, "rb") as f:
+# ---------------------------------------------------
+# LOAD DATA
+# ---------------------------------------------------
 
 # ---------------------------------------------------
 # LOAD DATA
 # ---------------------------------------------------
 
+MOVIES_PATH = os.path.join(
+    BASE_DIR,
+    "..",
+    "data",
+    "u.item"
+)
+
+RATINGS_PATH = os.path.join(
+    BASE_DIR,
+    "..",
+    "data",
+    "u.data"
+)
+
 movies = pd.read_csv(
-    "../data/u.item",
+    MOVIES_PATH,
     sep="|",
     encoding="latin-1",
     header=None
 )
+
 genre_cols = [
     "unknown","Action","Adventure","Animation",
     "Children","Comedy","Crime","Documentary",
@@ -67,13 +104,12 @@ similarity_matrix = cosine_similarity(
 )
 
 ratings = pd.read_csv(
-    "../data/u.data",
+    RATINGS_PATH,
     sep="\t",
     names=["user_id", "movie_id", "rating", "timestamp"]
 )
 
 num_movies = len(movie_encoder.classes_)
-
 # ---------------------------------------------------
 # RECOMMENDATION FUNCTION
 # ---------------------------------------------------
