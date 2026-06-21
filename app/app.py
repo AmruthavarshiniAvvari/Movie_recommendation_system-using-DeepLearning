@@ -19,6 +19,7 @@ st.set_page_config(
 # ---------------------------------------------------
 # LOAD MODEL
 # ---------------------------------------------------
+
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -35,14 +36,13 @@ model = tf.keras.models.load_model(MODEL_PATH)
 # ---------------------------------------------------
 # LOAD ENCODERS
 # ---------------------------------------------------
+
 USER_ENCODER_PATH = os.path.join(
     BASE_DIR,
     "..",
     "models",
     "user_encoder.pkl"
 )
-
-with open(USER_ENCODER_PATH, "rb") as f:
 
 MOVIE_ENCODER_PATH = os.path.join(
     BASE_DIR,
@@ -51,10 +51,11 @@ MOVIE_ENCODER_PATH = os.path.join(
     "movie_encoder.pkl"
 )
 
+with open(USER_ENCODER_PATH, "rb") as f:
+    user_encoder = pickle.load(f)
+
 with open(MOVIE_ENCODER_PATH, "rb") as f:
-# ---------------------------------------------------
-# LOAD DATA
-# ---------------------------------------------------
+    movie_encoder = pickle.load(f)
 
 # ---------------------------------------------------
 # LOAD DATA
@@ -110,6 +111,7 @@ ratings = pd.read_csv(
 )
 
 num_movies = len(movie_encoder.classes_)
+
 # ---------------------------------------------------
 # RECOMMENDATION FUNCTION
 # ---------------------------------------------------
