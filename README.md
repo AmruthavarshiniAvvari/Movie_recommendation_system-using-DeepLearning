@@ -82,8 +82,8 @@ movie-recommendation-system-using-DL/
 │
 ├── screenshots/
 │   ├── Home.png
-│   ├── recommendation sbyid.png
-│   ├── recommendation sbymoviename.png
+│   ├── recommendationsbyid.png
+│   ├── recommendationsbymoviename.png
 │   └── about.png
 │
 ├── requirements.txt
